@@ -1,3 +1,13 @@
 from django.db import models
 
-# Create your models here.
+from common.models import IndexedTimeStampedModel
+
+
+class Article(IndexedTimeStampedModel):
+
+    title = models.CharField('título', max_length=100)
+    slug = models.SlugField()
+    content = models.TextField('conteudo', blank=True)
+    preview = models.TextField('prévia', blank=True)
+    date = models.DateField('data', blank=True, null=True)
+    draft = models.BooleanField(default=True)
