@@ -1,7 +1,10 @@
 from datetime import date
 from django.test import TestCase
 
+from model_mommy import mommy
+
 from blog.models import Article
+from perfil.models import Perfil
 
 
 class ArticleTest(TestCase):
@@ -13,15 +16,17 @@ class ArticleTest(TestCase):
             content='Conteudo',
             preview='Previa',
             date=date.today(),
-            draft=True
+            draft=True,
+            author=mommy.make(Perfil)
         )
 
     def test_can_create_a_article(self):
         self.assertTrue(Article.objects.exists())
 
     def test_article_fields(self):
-        """Article must have [slug, title, content, preview, date, draft]"""
-        fields = ['slug', 'title', 'content', 'preview', 'date', 'draft']
+        """Article must have [slug, title, content, preview, date, draft, author]."""
+        fields = ['slug', 'title', 'content', 'preview',
+                  'date', 'draft', 'author']
 
         for field in fields:
             with self.subTest():
@@ -42,6 +47,3 @@ class ArticleTest(TestCase):
 
     def test_draft_field_must_be_default_true(self):
         self.assertTrue(Article._meta.get_field('draft').default)
-
-    def test(self):
-        self.fail('Incluir perfil no Post')
