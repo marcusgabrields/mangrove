@@ -10,4 +10,5 @@ class Article(IndexedTimeStampedModel):
     content = models.TextField('conteudo', blank=True)
     preview = models.TextField('prévia', blank=True)
     date = models.DateField('data', blank=True, null=True)
+    author = models.ForeignKey('perfil.Perfil', on_delete=models.CASCADE)
     draft = models.BooleanField(default=True)
