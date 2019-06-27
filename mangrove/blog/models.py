@@ -8,13 +8,16 @@ from mangrove.common.models import IndexedTimeStampedModel
 class Tag(IndexedTimeStampedModel):
 
     name = models.CharField(_('name'), max_length=15)
-    slug = models.SlugField(_('slug'))
+    slug = models.SlugField(_('slug'), unique=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Article(IndexedTimeStampedModel):
 
     title = models.CharField(_('title'), max_length=100)
-    slug = models.SlugField(_('slug'))
+    slug = models.SlugField(_('slug'), unique=True)
     content = MarkdownxField(_('content'), blank=True)
     preview = models.TextField(_('preview'), blank=True)
     date = models.DateField(_('date'), blank=True, null=True)
@@ -22,3 +25,6 @@ class Article(IndexedTimeStampedModel):
                                on_delete=models.CASCADE)
     tags = models.ManyToManyField('blog.Tag')
     draft = models.BooleanField(_('draft'), default=True)
+
+    def __str__(self):
+        return self.title

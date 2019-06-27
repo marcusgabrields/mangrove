@@ -14,5 +14,6 @@ class UserManager(BaseUserManager):
         user = self.create_user(**kwargs)
         user.is_superuser = True
         user.is_staff = True
+        user.is_trusty = True
         user.save(using=self._db)
         return user
