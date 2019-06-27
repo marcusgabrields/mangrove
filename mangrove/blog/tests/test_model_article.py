@@ -17,16 +17,19 @@ class ArticleTest(TestCase):
             preview='Previa',
             date=date.today(),
             draft=True,
-            author=mommy.make(Perfil)
+            author=mommy.make(Perfil),
         )
+
+        self.article.tags.set(mommy.make('blog.tag', _quantity=2))
 
     def test_can_create_a_article(self):
         self.assertTrue(Article.objects.exists())
 
     def test_article_fields(self):
-        """Article must have [slug, title, content, preview, date, draft, author]."""
+        """Article must have [slug, title, content,
+           preview, date, draft, author, tags]."""
         fields = ['slug', 'title', 'content', 'preview',
-                  'date', 'draft', 'author']
+                  'date', 'draft', 'author', 'tags']
 
         for field in fields:
             with self.subTest():
@@ -47,3 +50,6 @@ class ArticleTest(TestCase):
 
     def test_draft_field_must_be_default_true(self):
         self.assertTrue(Article._meta.get_field('draft').default)
+
+    def test_tags_len_must_be_2(self):
+        self.assertEqual(2, len(self.article.tags.all()))

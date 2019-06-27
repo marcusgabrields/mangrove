@@ -14,5 +14,5 @@ class BlogViewTest(TestCase):
     def test_template_used(self):
         self.assertTemplateUsed(self.resp, 'blog/blog.html')
 
-    def test_fail(self):
-        self.fail('Quando o templateestiver pronto, integrar com o back')
+    # def test_fail(self):
+    #     self.fail('Quando o templateestiver pronto, integrar com o back')

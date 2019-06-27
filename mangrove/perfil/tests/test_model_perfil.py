@@ -19,17 +19,15 @@ class PerfilTest(TestCase):
         mocked_image.name = 'perfil_photo_test.png'
 
         self.p = Perfil.objects.create(
+            user=mommy.make(User),
             name='Marcus Gabriel',
             title='Title',
             resume='Resume',
             photo=mocked_image
         )
-        self.p.user = mommy.make(User)
-
-        self.p.save()
 
     def tearDown(self):
-        os.remove('perfil_photo_test.png')
+        os.remove('mediafiles/perfil_photo_test.png')
 
     def test_can_create(self):
         self.assertTrue(Perfil.objects.exists())

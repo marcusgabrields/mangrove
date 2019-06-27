@@ -1,16 +1,24 @@
 from django.db import models
-
+from django.utils.translation import ugettext_lazy as _
 from markdownx.models import MarkdownxField
 
 from mangrove.common.models import IndexedTimeStampedModel
 
 
+class Tag(IndexedTimeStampedModel):
+
+    name = models.CharField(_('name'), max_length=15)
+    slug = models.SlugField(_('slug'))
+
+
 class Article(IndexedTimeStampedModel):
 
-    title = models.CharField('título', max_length=100)
-    slug = models.SlugField()
-    content = MarkdownxField('conteudo', blank=True)
-    preview = models.TextField('prévia', blank=True)
-    date = models.DateField('data', blank=True, null=True)
-    author = models.ForeignKey('perfil.Perfil', on_delete=models.CASCADE, null=True, blank=True)
-    draft = models.BooleanField(default=True)
+    title = models.CharField(_('title'), max_length=100)
+    slug = models.SlugField(_('slug'))
+    content = MarkdownxField(_('content'), blank=True)
+    preview = models.TextField(_('preview'), blank=True)
+    date = models.DateField(_('date'), blank=True, null=True)
+    author = models.ForeignKey('perfil.Perfil', verbose_name=_('author'),
+                               on_delete=models.CASCADE)
+    tags = models.ManyToManyField('blog.Tag')
+    draft = models.BooleanField(_('draft'), default=True)
