@@ -41,10 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'test_without_migrations',
-    'account',
-    'common',
-    'blog',
-    'perfil',
+    'mangrove.account',
+    'mangrove.common',
+    'mangrove.blog',
+    'mangrove.perfil',
 ]
 
 MIDDLEWARE = [

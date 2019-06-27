@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from mangrove.blog.views import blog
+
 
 urlpatterns = [
+    path('blog/', blog, name='blog'),
     path('admin/', admin.site.urls),
 ]

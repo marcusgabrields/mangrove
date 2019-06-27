@@ -6,7 +6,7 @@ from model_mommy import mommy
 from unittest import mock
 import os
 
-from perfil.models import Perfil
+from mangrove.perfil.models import Perfil
 
 
 User = get_user_model()

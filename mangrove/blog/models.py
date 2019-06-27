@@ -1,6 +1,6 @@
 from django.db import models
 
-from common.models import IndexedTimeStampedModel
+from mangrove.common.models import IndexedTimeStampedModel
 
 
 class Article(IndexedTimeStampedModel):

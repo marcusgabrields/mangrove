@@ -3,8 +3,8 @@ from django.test import TestCase
 
 from model_mommy import mommy
 
-from blog.models import Article
-from perfil.models import Perfil
+from mangrove.blog.models import Article
+from mangrove.perfil.models import Perfil
 
 
 class ArticleTest(TestCase):

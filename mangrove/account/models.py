@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
 from .managers import UserManager
-from common.models import IndexedTimeStampedModel
+from mangrove.common.models import IndexedTimeStampedModel
 
 
 class User(AbstractBaseUser, PermissionsMixin, IndexedTimeStampedModel):
