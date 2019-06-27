@@ -1,15 +1,16 @@
-from django.test import TestCase
+import os
+from unittest import mock
+
 from django.contrib.auth import get_user_model
 from django.core.files import File
+from django.test import TestCase
 from model_mommy import mommy
-
-from unittest import mock
-import os
 
 from mangrove.perfil.models import Perfil
 
 
 User = get_user_model()
+
 
 class PerfilTest(TestCase):
 
