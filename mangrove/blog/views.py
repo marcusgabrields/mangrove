@@ -1,5 +1,10 @@
 from django.shortcuts import render
 
+from mangrove.blog.models import Article
+
 
 def blog(request):
-    return render(request, 'blog/blog.html')
+    context = {
+        'article': Article.objects.first()
+    }
+    return render(request, 'blog/blog.html', context)
