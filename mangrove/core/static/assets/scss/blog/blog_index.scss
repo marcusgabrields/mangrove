@@ -1,0 +1,50 @@
+.blog-index-wrapper {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas:
+        "articles"
+        "categories";
+
+    padding: 20px;
+
+    > .blog-articles {
+        display: grid;
+        grid-area: articles;
+        grid-gap: 15px;
+    }
+
+    > .blog-categories {
+        display: grid;
+        grid-area: categories;
+    }
+}
+
+
+@media screen and (min-width:650px) {
+
+    .blog-index-wrapper {
+        grid-template-areas: "articles categories";
+    }
+    
+}
+
+
+@media screen and (min-width:765px) {
+
+    .blog-index-wrapper {
+        > .blog-articles {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    
+}
+
+
+@media screen and (min-width:1000px) {
+
+    .blog-index-wrapper {
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+    
+}

@@ -1,0 +1,66 @@
+@import '../../colors';
+
+// Mixins
+@mixin card-title {
+    font-size: 1.5rem;
+    font-family: 'Raleway', sans-serif;
+    color: $black;
+    font-weight: 600;
+    line-height: 1.65rem;
+}
+
+@mixin card-previw {
+    font-size: 1,25rem;
+    font-family: 'Open Sans', sans-serif;
+    color: $black;
+    line-height: 1.65rem;
+}
+
+
+// Component
+.card {
+    display: grid;
+
+    background-color: #fff;
+    padding: 15px 10px 20px 10px;
+    border-radius: 5px;
+
+    > .head {
+        margin-bottom: 15px;
+        text-decoration: none;
+        @include card-title;
+        
+        &:hover {
+            transition: .5s ease;
+            text-decoration: underline;
+        }
+    }
+
+    > .preview {
+        margin-bottom: 40px;
+        @include card-previw;
+    }
+
+    > .footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        > .date {
+            color: $red;
+        }
+
+        > .categories {
+
+            > .category {
+                border-radius: 5px;
+                padding: 3px 7px;
+                background-color: $black;
+                color: $black;
+                color: white;
+                font-size: 0.875rem;
+            }
+        }
+    }
+}
+

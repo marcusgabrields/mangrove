@@ -1,0 +1,83 @@
+@mixin article-title {
+    font-size: 1.75rem;
+    font-family: 'Raleway', sans-serif;
+    color: $black;
+    font-weight: 600;
+    line-height: 1.80rem;
+}
+
+@mixin article-text {
+    font-size: 1.25rem;
+    font-family: 'Open Sans', sans-serif;
+    color: $black;
+    line-height: 2rem;
+}
+
+
+.article-author {
+    margin-top: 50px;
+    background-color: white;
+    padding: 15px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template:
+        'img'
+        'info';
+
+    > .img-container {
+        text-align: center;
+        grid-area: img;
+
+        > img {
+            width: 245px;
+            border-radius: 50%;
+            border: 4px solid #eee;
+        }
+    }
+
+    > .info-container {
+        grid-area: info;
+        text-align: center;
+
+        > .info-wrapper{
+            > .name {
+                @include article-title();
+                color: $red;
+                font-size: 1.50rem;
+                margin-bottom: 10px;
+            }
+
+            > .about {
+                @include article-text();
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width:765px) {
+    .article-author {
+        grid-template: 'img info';
+
+        > .info-container {
+            display: flex;
+            text-align: left;
+            align-items: center;
+            
+        }
+    }
+}
+
+
+@media screen and (min-width:1000px) {
+    .article-author {
+        padding: 3em 3em !important;
+
+        > .img-container {
+            > img {
+                max-width: 160px;
+            }
+        }
+    }
+}

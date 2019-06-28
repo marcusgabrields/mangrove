@@ -1,0 +1,14 @@
+@import 'reset';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i|Raleway:600');
+
+@import 'blog/components/card';
+@import 'blog/components/category_side_menu';
+
+@import 'blog/blog_index';
+@import 'blog/article';
+
+
+body {
+    background-color: #f4f4f4;
+    font-family: 'Open Sans', sans-serif;
+}
