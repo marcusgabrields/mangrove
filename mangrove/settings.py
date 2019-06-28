@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'test_without_migrations',
     'markdownx',
+    'mangrove.core',
     'mangrove.account',
     'mangrove.common',
     'mangrove.blog',
