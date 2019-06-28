@@ -1,24 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{% extends 'base.html' %}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/railscasts.min.css">
-    <title>Document</title>
-</head>
-<body>
-    <h1>BLOG</h1>
+{% block link %}
 
-    <div id="content"></div>
+{% endblock link %}
 
+{% block title %}
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.2/marked.min.js"></script>
-    <script>
-        document.getElementById('content').innerHTML = marked('{{ article.content|escapejs}}');
-        hljs.initHighlightingOnLoad();
-    </script>
-</body>
-</html>
+{% endblock title %}
+
+{% block content %}
+
+    <section class="blog-index-wrapper">
+        <div class="blog-articles">
+            {% for article in articles %}
+            <div class="card">
+                <a class="head" href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+                <p class="preview">{{ article.preview }}</p>
+                <div class="footer">
+                    <p class="date">{{ article.date|date:"d M, Y" }}</p>
+                    <div class="categories">
+                        {% for tag in article.tags.all %}
+                            <span class="category">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        {% endfor %}
+        <div class="blog-categories">
+            <ul class="category-side-menu">
+                <li class="header">Categorias</li>
+                {% for category in categories %}
+                    <li class="category"> 
+                        <span><a href="#" class="link">{{ category }}</a></span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+{% endblock content %}
+
+{% block script %}
+{% endblock script %}

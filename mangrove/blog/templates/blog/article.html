@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block link %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/github.min.css">
+{% endblock link %}
+
+{% block title %}
+
+{% endblock title %}
+
+{% block content %}
+
+    <section class="article-wrapper">
+        <article class="article">
+            <header class="header">
+                <h2 class="title">{{ article.title }}</h2>
+                <div class="infos">
+                    <span class="by">By <a href="#">{{ article.author }}</a></span>
+                    <i class="far fa-clock"></i> {{ article.date|date:"d M, Y" }}
+                </div>
+            </header>
+            <section id="content" class="content">
+            </section>
+        </article>
+        <section class="article-author">
+            <div class="img-container">
+                <img src="{% get_media_prefix %}{{ article.author.photo }}" alt="">
+            </div>
+            <div class="info-container">
+                <div class="info-wrapper">
+                    <h2 class="name">{{ article.author }}</h2>
+                    <p class="about">{{ article.author.resume }}</p>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock content %}
+
+{% block script %}
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5cf70c5e4351e9001264f4e7&product='inline-share-buttons" async="async"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.2/marked.min.js"></script>
+
+    <script>
+        let share_link = '<div class="sharethis-inline-share-buttons"></div>'
+        document.getElementById('content').innerHTML = marked('{{ article.content|escapejs}}') + share_link;
+        hljs.initHighlightingOnLoad();
+    </script>
+{% endblock script %}
